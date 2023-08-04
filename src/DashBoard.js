@@ -17,9 +17,11 @@ export default function DashBoard() {
       <h1>DashBoard</h1>
       <p>Hello</p>
       <br></br>
-      {show && <Modal1 show={show} setShow={setShow} arr={arr} setArr={arr} />}
+      {show && (
+        <Modal1 show={show} setShow={setShow} arr={arr} setArr={setArr} />
+      )}
       {arr.length > 0 ? (
-        <SlidingBox />
+        <SlidingBox arr={arr} />
       ) : (
         <p className="font-bold p-2">No questions right now</p>
       )}

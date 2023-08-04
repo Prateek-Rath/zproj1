@@ -7,6 +7,9 @@ export default function Modal1({ setShow, arr, setArr }) {
   const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newarr = arr;
+    newarr.push({ question: q, answer: ans });
+    setArr(newarr);
   };
   const handleoptChange = (e) => {};
   return (
