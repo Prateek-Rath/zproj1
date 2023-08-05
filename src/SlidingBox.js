@@ -1,12 +1,10 @@
 // import { useState } from "react";
 import QuestionBox from "./QuestionBox";
-export default function SlidingBox({ arr }) {
-  // const [ad, setAd] = useState(0);
-  // const ads = [];
+export default function SlidingBox({ arr, setArr, show, setShow }) {
   return (
-    <div className="container">
+    <div className="container flex flex-wrap">
       {arr.map((el, index) => {
-        return <QuestionBox />;
+        return <QuestionBox key={el.key} el={el} arr={arr} setArr={setArr} />;
       })}
     </div>
   );

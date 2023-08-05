@@ -5,10 +5,10 @@
 import { useState } from "react";
 import SlidingBox from "./SlidingBox";
 import { Button } from "react-bootstrap";
-import Modal1 from "./Modal";
+import Modal1 from "./NewQuestion";
 export default function DashBoard() {
   const [arr, setArr] = useState([]);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const addq = () => {
     setShow(!show);
   };
@@ -21,7 +21,7 @@ export default function DashBoard() {
         <Modal1 show={show} setShow={setShow} arr={arr} setArr={setArr} />
       )}
       {arr.length > 0 ? (
-        <SlidingBox arr={arr} />
+        <SlidingBox arr={arr} setArr={setArr} show={show} setShow={setShow} />
       ) : (
         <p className="font-bold p-2">No questions right now</p>
       )}

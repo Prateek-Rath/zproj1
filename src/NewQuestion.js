@@ -1,23 +1,25 @@
 import "./index.css";
 import "./App.css";
+import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-export default function Modal1({ setShow, arr, setArr }) {
+export default function Modal1({ setShow, arr, setArr, show }) {
   const [q, setQ] = useState("");
   const [ans, setAns] = useState("");
-  const [opt, setOpt] = useState([]);
+  // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
     let newarr = arr;
-    newarr.push({ question: q, answer: ans });
+    newarr.push({ key: uuidv4(), question: q, answer: ans });
     setArr(newarr);
+    setShow(false);
   };
-  const handleoptChange = (e) => {};
+  // const handleoptChange = (e) => {};
   return (
     <div className="modal bg-red-500">
-      {/* <p>THIS IS THE FLOATING MODAL</p> */}
+      <p>THIS IS THE NEW QUESTION MODAL</p>
       <div className="flex-row">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <label for="question">QUESTION</label>
+          <label htmlFor="question">QUESTION</label>
           <br></br>
           <input
             type="text"
@@ -27,7 +29,7 @@ export default function Modal1({ setShow, arr, setArr }) {
           ></input>
           <br></br>
           <br></br>
-          <label for="answer">ANSWER</label>
+          <label htmlFor="answer">ANSWER</label>
           <br></br>
           <input
             name="answer"
