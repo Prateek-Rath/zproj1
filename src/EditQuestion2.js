@@ -1,50 +1,44 @@
 import "./index.css";
 import "./App.css";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-export default function Modal1({ setShow, arr, setArr, show }) {
-  const [q, setQ] = useState("");
-  const [ans, setAns] = useState("");
-  const [type, setType] = useState("mcq");
-  const [file, setFile] = useState("");
-  const [options, setOptions] = useState({ a: "", b: "", c: "", d: "" });
+export default function Edit1({ el, setShow, arr, setArr }) {
+  const [q, setQ] = useState(el.question);
+  const [ans, setAns] = useState(el.answer);
+  const [type, setType] = useState(el.type);
+  const [file, setFile] = useState(el.img);
+  const [options, setOptions] = useState(el.options);
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("this handle submit was called");
     let newarr = arr;
-    if (type === "mcq") {
-      newarr.push({
-        key: uuidv4(),
-        question: q,
-        answer: ans,
-        type: type,
-        img: file,
-        options: options,
-      });
-    } else {
-      newarr.push({
-        key: uuidv4(),
-        question: q,
-        answer: ans,
-        type: type,
-        img: file,
-        options: null,
-      });
-    }
-
+    //if the question's key is equal to the element's key, then set the question to be
+    newarr.map((piece, index) => {
+      if (piece.key === el.key) {
+        let p2 = el;
+        p2.question = q;
+        p2.answer = ans;
+        p2.key = el.key;
+        p2.img = file;
+        p2.options = options;
+        return p2;
+      } else return piece;
+    });
     setArr(newarr);
     setShow(false);
   };
   // const handleoptChange = (e) => {};
   return (
-    <div className="modal bg-green-500 flex flex-wrap">
-      {/* <p>THIS IS THE NEW QUESTION MODAL</p> */}
-      <div className="flex flex-row">
-        <form onSubmit={(e) => handleSubmit(e)}>
+    <div className="modal bg-green-500">
+      {/* <p>THIS IS THE EDIT QUESTION MODAL</p> */}
+      <div className="flex-row">
+        <form onSubmit={(e) => handleSubmit(e)} style={{ overflow: "scroll" }}>
           <label htmlFor="q-type">Choose the q type</label>
           <select
             name="q-type"
             id="q-type"
+            value={type}
             onChange={(e) => {
               setType(e.target.value);
               console.log("option set to ", e.target.value);
@@ -61,6 +55,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
             type="text"
             name="question"
             id="question"
+            value={q}
             onChange={(e) => setQ(e.target.value)}
           ></input>
           <br></br>
@@ -72,6 +67,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
                 name="answer"
                 id="answer"
                 type="text"
+                value={ans}
                 onChange={(e) => setAns(e.target.value)}
               ></input>
               <br></br>
@@ -84,36 +80,40 @@ export default function Modal1({ setShow, arr, setArr, show }) {
                 <input
                   name="a"
                   type="text"
+                  value={options.a}
                   onChange={(e) => {
-                    options.a = e.target.value;
-                    setOptions(options);
+                    const val = e.target.value;
+                    setOptions({ ...options, a: val });
                   }}
                 ></input>
                 <label htmlFor="b">B</label>{" "}
                 <input
                   name="b"
                   type="text"
+                  value={options.b}
                   onChange={(e) => {
-                    options.b = e.target.value;
-                    setOptions(options);
+                    const val = e.target.value;
+                    setOptions({ ...options, b: val });
                   }}
                 ></input>
                 <label htmlFor="c">C</label>{" "}
                 <input
                   name="c"
                   type="text"
+                  value={options.c}
                   onChange={(e) => {
-                    options.c = e.target.value;
-                    setOptions(options);
+                    const val = e.target.value;
+                    setOptions({ ...options, c: val });
                   }}
                 ></input>
                 <label htmlFor="d">D</label>{" "}
                 <input
                   name="d"
                   type="text"
+                  value={options.d}
                   onChange={(e) => {
-                    options.d = e.target.value;
-                    setOptions(options);
+                    const val = e.target.value;
+                    setOptions({ ...options, d: val });
                   }}
                 ></input>
                 <label htmlFor="answer">ANSWER</label>
@@ -121,6 +121,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
                   name="answer"
                   id="answer"
                   type="text"
+                  value={ans}
                   onChange={(e) => setAns(e.target.value)}
                 ></input>
               </div>
@@ -134,6 +135,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
               name="q-img"
               id="q-img"
               type="file"
+              value={file}
               onChange={(e) => setFile(e.target.value)}
             ></input>
           </div>
