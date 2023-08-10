@@ -9,10 +9,10 @@ function classNames(...classes) {
 
 export default function Header({ children, val, setVal }) {
   const navigation = [
-    { name: "Dashboard", href: "/", current: true },
-    { name: "Team", href: "/team", current: false },
-    { name: "Projects", href: "/project", current: false },
-    { name: "Calendar", href: "/calendar", current: false },
+    { name: "Home", href: "/", current: true },
+    { name: "Quiz", href: "/quiz", current: false },
+    { name: "Results", href: "/results", current: false },
+    { name: "About", href: "/about", current: false },
   ];
 
   return (

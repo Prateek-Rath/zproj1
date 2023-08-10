@@ -38,9 +38,9 @@ export default function QuestionView() {
             <p className="sm:m-0 lg:m-2 md:m-2">d. {opts.d}</p>
           </div>
         ) : type === "subj" ? (
-          <p>subj</p>
+          <p>type: subjective</p>
         ) : (
-          <p>num</p>
+          <p>type: numeric</p>
         )}
       </div>
       <button

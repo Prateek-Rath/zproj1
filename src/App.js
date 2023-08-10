@@ -2,7 +2,7 @@
 import "./App.css";
 import Header from "./Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashBoard from "./DashBoard";
+import DashBoard from "./QuizPage";
 import Team from "./Team";
 import Project from "./Projects";
 import QuestionView from "./QuestionView";
@@ -18,10 +18,10 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/edit/:id" element={<DashBoard />}></Route>
         <Route path="/view/:name/:qno" element={<QuestionView />}></Route>
-        <Route path="/" element={<Project />}></Route>
-        <Route path="/project" element={<h1>Project</h1>}></Route>
-        <Route path="/team" element={<Team />}></Route>
-        <Route path="/calendar" element={<h1>Cal</h1>}></Route>
+        <Route path="/quiz" element={<Project />}></Route>
+        <Route path="/results" element={<h1>Project</h1>}></Route>
+        <Route path="/about" element={<Team />}></Route>
+        <Route path="/about" element={<h1>Cal</h1>}></Route>
       </Routes>
     </BrowserRouter>
   );
