@@ -19,6 +19,7 @@ function App() {
         <Route path="/edit/:id" element={<DashBoard />}></Route>
         <Route path="/view/:name/:qno" element={<QuestionView />}></Route>
         <Route path="/quiz" element={<Project />}></Route>
+        <Route path="/quiz/edit/:id" element={<Project />}></Route>
         <Route path="/results" element={<h1>Project</h1>}></Route>
         <Route path="/about" element={<Team />}></Route>
         <Route path="/about" element={<h1>Cal</h1>}></Route>
