@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./DashBoard";
 import Team from "./Team";
 import Project from "./Projects";
+import QuestionView from "./QuestionView";
+import Home from "./Home";
 // import { useState } from "react";
 
 function App() {
@@ -13,8 +15,11 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<DashBoard />}></Route>
-        <Route path="/project" element={<Project />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/edit/:id" element={<DashBoard />}></Route>
+        <Route path="/view/:name/:qno" element={<QuestionView />}></Route>
+        <Route path="/" element={<Project />}></Route>
+        <Route path="/project" element={<h1>Project</h1>}></Route>
         <Route path="/team" element={<Team />}></Route>
         <Route path="/calendar" element={<h1>Cal</h1>}></Route>
       </Routes>

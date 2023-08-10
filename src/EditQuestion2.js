@@ -1,8 +1,11 @@
 import "./index.css";
 import "./App.css";
 // import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "./context";
 export default function Edit1({ el, setShow, arr, setArr }) {
+  const { open, setOpen } = useContext(AppContext);
+  // console.log(el.img);
   const [q, setQ] = useState(el.question);
   const [ans, setAns] = useState(el.answer);
   const [type, setType] = useState(el.type);
@@ -11,7 +14,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this handle submit was called");
+    // console.log("this handle submit was called");
     let newarr = arr;
     //if the question's key is equal to the element's key, then set the question to be
     newarr.map((piece, index) => {
@@ -27,12 +30,13 @@ export default function Edit1({ el, setShow, arr, setArr }) {
     });
     setArr(newarr);
     setShow(false);
+    setOpen(!open);
   };
   // const handleoptChange = (e) => {};
   return (
     <div className="modal bg-green-500">
       {/* <p>THIS IS THE EDIT QUESTION MODAL</p> */}
-      <div className="flex-row">
+      <div className="flex-row flex-shrink">
         <form onSubmit={(e) => handleSubmit(e)} style={{ overflow: "scroll" }}>
           <label htmlFor="q-type">Choose the q type</label>
           <select
@@ -41,7 +45,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
             value={type}
             onChange={(e) => {
               setType(e.target.value);
-              console.log("option set to ", e.target.value);
+              // console.log("option set to ", e.target.value);
             }}
           >
             <option value="mcq">Multiple Choice Single Correct</option>
@@ -144,7 +148,10 @@ export default function Edit1({ el, setShow, arr, setArr }) {
             <button
               type="button"
               className="bg-blue-500"
-              onClick={() => setShow(false)}
+              onClick={() => {
+                setShow(false);
+                setOpen(!open);
+              }}
             >
               CLOSE
             </button>

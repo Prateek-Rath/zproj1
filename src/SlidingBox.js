@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import QuestionBox from "./QuestionBox";
-export default function SlidingBox({ arr, setArr, show, setShow }) {
+export default function SlidingBox({ arr, setArr }) {
   return (
     <div className="container flex flex-wrap">
       {arr.map((el, index) => {

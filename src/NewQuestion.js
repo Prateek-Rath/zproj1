@@ -1,12 +1,14 @@
 import "./index.css";
 import "./App.css";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "./context";
 export default function Modal1({ setShow, arr, setArr, show }) {
   const [q, setQ] = useState("");
   const [ans, setAns] = useState("");
   const [type, setType] = useState("mcq");
-  const [file, setFile] = useState("");
+  const { open, setOpen } = useContext(AppContext);
+  const [file, setFile] = useState(null);
   const [options, setOptions] = useState({ a: "", b: "", c: "", d: "" });
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
@@ -28,12 +30,13 @@ export default function Modal1({ setShow, arr, setArr, show }) {
         answer: ans,
         type: type,
         img: file,
-        options: null,
+        options: options,
       });
     }
 
     setArr(newarr);
     setShow(false);
+    setOpen(!open);
   };
   // const handleoptChange = (e) => {};
   return (
@@ -47,7 +50,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
             id="q-type"
             onChange={(e) => {
               setType(e.target.value);
-              console.log("option set to ", e.target.value);
+              // console.log("option set to ", e.target.value);
             }}
           >
             <option value="mcq">Multiple Choice Single Correct</option>
@@ -142,7 +145,10 @@ export default function Modal1({ setShow, arr, setArr, show }) {
             <button
               type="button"
               className="bg-blue-500"
-              onClick={() => setShow(false)}
+              onClick={() => {
+                setShow(false);
+                setOpen(!open);
+              }}
             >
               CLOSE
             </button>

@@ -16,8 +16,10 @@ code {
   position: absolute;
   left: 50%;
   top: 50%;
-  height: max-content;
-  width: max-content;
+  height: min-content;
+  width: min-content;
+  max-height: 100%;
+  max-width: 100%;
   transform: translate(-50%, -50%)
 }
 
@@ -104,8 +106,10 @@ body {
 }
 
 p {
-  margin-bottom: 1.5rem;
-  max-width: 40em;
+  /* margin-bottom: 1.5rem; */
+  /* max-width: 40em; */
+  width: 100%;
+  height: fit-content;
 }
 
 h1,
@@ -276,4 +280,8 @@ form > :first-child {
 }
 form > :last-child {
   margin-bottom: 0;
+}
+
+p{
+  width: 100%;
 }
