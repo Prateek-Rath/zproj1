@@ -8,13 +8,27 @@ export default function Modal1({ setShow, arr, setArr, show }) {
   const [ans, setAns] = useState("");
   const [type, setType] = useState("mcq");
   const { open, setOpen } = useContext(AppContext);
-  const [file, setFile] = useState(null);
+  const file = "dummy";
+  // const [file, setFile] = useState(undefined);
   const [options, setOptions] = useState({ a: "", b: "", c: "", d: "" });
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
     let newarr = arr;
     if (type === "mcq") {
+      if (
+        !(
+          ans.toLowerCase() === "a" ||
+          ans.toLowerCase() === "b" ||
+          ans.toLowerCase() === "c" ||
+          ans.toLowerCase() === "d"
+        )
+      ) {
+        alert(
+          "Your answer must be a single lowercase alphabet (only 'a', 'b', 'c', 'd' are allowed)"
+        );
+        return;
+      }
       newarr.push({
         key: uuidv4(),
         question: q,
@@ -23,7 +37,11 @@ export default function Modal1({ setShow, arr, setArr, show }) {
         img: file,
         options: options,
       });
+      console.log(newarr.img);
     } else {
+      if (typeof ans != typeof 1) {
+        alert("Your answer must be a number");
+      }
       newarr.push({
         key: uuidv4(),
         question: q,
@@ -55,7 +73,7 @@ export default function Modal1({ setShow, arr, setArr, show }) {
           >
             <option value="mcq">Multiple Choice Single Correct</option>
             <option value="num">Numeric</option>
-            <option value="subj">Subjective</option>
+            {/* <option value="subj">Subjective</option> */}
           </select>
           <br></br>
           <br></br>
@@ -131,16 +149,19 @@ export default function Modal1({ setShow, arr, setArr, show }) {
             </>
           )}
           <br></br>
-          <div>
+          {/* <div>
             <label htmlFor="q-img">Attach an image(if you want)</label>
             <input
               name="q-img"
               id="q-img"
               type="file"
-              onChange={(e) => setFile(e.target.value)}
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+                console.log(file);
+              }}
             ></input>
           </div>
-          <br></br>
+          <br></br> */}
           <div className="flex flex-row justify-between">
             <button
               type="button"

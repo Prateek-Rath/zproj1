@@ -65,7 +65,7 @@ export default function DashBoard() {
       setQuizlist(newquiz);
       // console.log("Your quiz was saved!!");
       // console.log(localStorage);
-      navigate("/");
+      navigate("/quiz");
     }, 500);
   }
 

@@ -16,6 +16,7 @@ code {
   position: absolute;
   left: 50%;
   top: 50%;
+  margin: 4px;
   height: min-content;
   width: min-content;
   max-height: 100%;

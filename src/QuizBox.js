@@ -17,11 +17,20 @@ export default function QuizBox({ el }) {
     // console.log("You are trying to edit");
     navigate(`/edit/${el.key}`);
   }
+  function handleAttempt() {
+    console.log("We will go to the start page now");
+    navigate(`/quiz/attempt/${el.key}`);
+  }
   return (
     <div className="flex flex-col bg-amber-500 m-2">
       <pre className="m-y-0">{el.name} </pre>
       <div className="flex flex-row">
-        <button className="m-x-0 m-y-0 bg-blue-500 hover:bg-blue-400 text-white font-boldborder-b-4 border-blue-700 hover:border-blue-500 rounded">
+        <button
+          className="m-x-0 m-y-0 bg-blue-500 hover:bg-blue-400 text-white font-boldborder-b-4 border-blue-700 hover:border-blue-500 rounded"
+          onClick={() => {
+            handleAttempt();
+          }}
+        >
           Attempt
         </button>
         <button

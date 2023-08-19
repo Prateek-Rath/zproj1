@@ -16,8 +16,8 @@ export default function Header({ children, val, setVal }) {
   ];
 
   return (
-    <>
-      <Disclosure as="nav" className="bg-gray-800">
+    <div className="m-0">
+      <Disclosure as="nav" className="bg-gray-800 w-full">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -174,6 +174,6 @@ export default function Header({ children, val, setVal }) {
         )}
       </Disclosure>
       {/* {children} */}
-    </>
+    </div>
   );
 }

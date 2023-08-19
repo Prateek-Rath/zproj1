@@ -9,7 +9,8 @@ export default function Edit1({ el, setShow, arr, setArr }) {
   const [q, setQ] = useState(el.question);
   const [ans, setAns] = useState(el.answer);
   const [type, setType] = useState(el.type);
-  const [file, setFile] = useState(el.img);
+  const file = "dummy";
+  // const [file, setFile] = useState(el.img);
   const [options, setOptions] = useState(el.options);
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
@@ -25,6 +26,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
         p2.key = el.key;
         p2.img = file;
         p2.options = options;
+        p2.type = type;
         return p2;
       } else return piece;
     });
@@ -50,7 +52,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
           >
             <option value="mcq">Multiple Choice Single Correct</option>
             <option value="num">Numeric</option>
-            <option value="subj">Subjective</option>
+            {/* <option value="subj">Subjective</option> */}
           </select>
           <br></br>
           <br></br>
@@ -133,7 +135,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
             </>
           )}
           <br></br>
-          <div>
+          {/* <div>
             <label htmlFor="q-img">Attach an image(if you want)</label>
             <input
               name="q-img"
@@ -143,7 +145,7 @@ export default function Edit1({ el, setShow, arr, setArr }) {
               onChange={(e) => setFile(e.target.value)}
             ></input>
           </div>
-          <br></br>
+          <br></br> */}
           <div className="flex flex-row justify-between">
             <button
               type="button"

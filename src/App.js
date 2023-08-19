@@ -7,6 +7,8 @@ import Team from "./Team";
 import Project from "./Projects";
 import QuestionView from "./QuestionView";
 import Home from "./Home";
+import Start from "./Attempt/Start";
+import AttemptPage from "./Attempt/AttemptPage";
 // import { useState } from "react";
 
 function App() {
@@ -19,7 +21,12 @@ function App() {
         <Route path="/edit/:id" element={<DashBoard />}></Route>
         <Route path="/view/:name/:qno" element={<QuestionView />}></Route>
         <Route path="/quiz" element={<Project />}></Route>
-        <Route path="/quiz/edit/:id" element={<Project />}></Route>
+        <Route path="/quiz/edit/:id" element={<DashBoard />}></Route>
+        <Route path="/quiz/attempt/:id" element={<Start />}></Route>
+        <Route
+          path="/quiz/attempt/:quizid/:questionid"
+          element={<AttemptPage />}
+        ></Route>
         <Route path="/results" element={<h1>Project</h1>}></Route>
         <Route path="/about" element={<Team />}></Route>
         <Route path="/about" element={<h1>Cal</h1>}></Route>

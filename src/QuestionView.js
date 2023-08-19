@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "./context";
-import "./index.css";
+// import "./index.css";
 
 function getreqel(quizlist, name) {
   let newlist = quizlist;
@@ -25,17 +25,25 @@ export default function QuestionView() {
         You are currently viewing {name}'s question number {qno}
       </p> */}
       <div className="view m-2">
-        <div className="shadow md ">
+        <div className="shadow md p-2 border-green-500">
           <p>Question {qno}</p>
           <p className="w-full">{reqel.qa[qno - 1].question}</p>
         </div>
         {type === "mcq" ? (
           <div className="opts">
             <p>type: mcq</p>
-            <p className="sm:m-0 lg:m-2 md:m-2">a. {opts.a}</p>
-            <p className="sm:m-0 lg:m-2 md:m-2">b. {opts.b}</p>
-            <p className="sm:m-0 lg:m-2 md:m-2">c. {opts.c}</p>
-            <p className="sm:m-0 lg:m-2 md:m-2">d. {opts.d}</p>
+            <div className="w-100 h-100 rounded-md border-5 border-black bg-blue-300 hover:bg-blue-200">
+              <p className="sm:m-1 lg:m-2 md:m-2 ">a. {opts.a}</p>
+            </div>
+            <div className="w-100 h-100 rounded-md border-5 border-black bg-blue-300 hover:bg-blue-200">
+              <p className="sm:m-1 lg:m-2 md:m-2">b. {opts.b}</p>
+            </div>
+            <div className="w-100 h-100 rounded-md border-5 border-black bg-blue-300 hover:bg-blue-200">
+              <p className="sm:m-1 lg:m-2 md:m-2">c. {opts.c}</p>
+            </div>
+            <div className="w-100 h-100 rounded-md border-5 border-black bg-blue-300 hover:bg-blue-200">
+              <p className="sm:m-1 lg:m-2 md:m-2">d. {opts.d}</p>
+            </div>
           </div>
         ) : type === "subj" ? (
           <p>type: subjective</p>
