@@ -9,6 +9,9 @@ export default function Modal1({ setShow, arr, setArr, show }) {
   const [type, setType] = useState("mcq");
   const { open, setOpen } = useContext(AppContext);
   const file = "dummy";
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && !isNaN(n - 0);
+  }
   // const [file, setFile] = useState(undefined);
   const [options, setOptions] = useState({ a: "", b: "", c: "", d: "" });
   // const [opt, setOpt] = useState([]);
@@ -39,8 +42,9 @@ export default function Modal1({ setShow, arr, setArr, show }) {
       });
       console.log(newarr.img);
     } else {
-      if (typeof ans != typeof 1) {
+      if (!isNumber(ans)) {
         alert("Your answer must be a number");
+        return;
       }
       newarr.push({
         key: uuidv4(),

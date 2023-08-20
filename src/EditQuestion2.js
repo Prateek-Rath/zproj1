@@ -12,8 +12,12 @@ export default function Edit1({ el, setShow, arr, setArr }) {
   const file = "dummy";
   // const [file, setFile] = useState(el.img);
   const [options, setOptions] = useState(el.options);
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && !isNaN(n - 0);
+  }
   // const [opt, setOpt] = useState([]);
   const handleSubmit = (e) => {
+    let close = true;
     e.preventDefault();
     // console.log("this handle submit was called");
     let newarr = arr;
@@ -27,12 +31,27 @@ export default function Edit1({ el, setShow, arr, setArr }) {
         p2.img = file;
         p2.options = options;
         p2.type = type;
+        if (type === "num" && !isNumber(ans)) {
+          alert("Your answer must be a number");
+          close = false;
+          return piece;
+        }
+        if (
+          type === "mcq" &&
+          ["a", "b", "c", "d"].find((el) => ans === el) === null
+        ) {
+          alert("Your answer must be a single alphabet ('a', 'b', 'c' or 'd')");
+          close = false;
+          return piece;
+        }
         return p2;
       } else return piece;
     });
     setArr(newarr);
-    setShow(false);
-    setOpen(!open);
+    if (close) {
+      setShow(false);
+      setOpen(!open);
+    }
   };
   // const handleoptChange = (e) => {};
   return (

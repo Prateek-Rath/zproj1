@@ -11,7 +11,10 @@ export default function Footer({ qno, goNext, goPrev, finish }) {
         >
           &laquo; Previous
         </button>
-        <button className="bg-yellow-500 p-1 rounded text-white hover:bg-black">
+        <button
+          className="bg-yellow-500 p-1 rounded text-white hover:bg-black"
+          onClick={() => finish()}
+        >
           Finish
         </button>
         <button

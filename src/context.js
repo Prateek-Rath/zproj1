@@ -12,13 +12,16 @@ function getfromlocal(str1) {
 }
 const AppProvider = ({ children }) => {
   const [quizlist, setQuizlist] = useState(getfromlocal("quizlist"));
+  const [history, setHistory] = useState(getfromlocal("history"));
   const [open, setOpen] = useState(false);
   //   console.log(
   // "b4 we send this stuff to other components, quizlist is: ",
   // quizlist
   //   );
   return (
-    <AppContext.Provider value={{ quizlist, setQuizlist, open, setOpen }}>
+    <AppContext.Provider
+      value={{ quizlist, setQuizlist, open, setOpen, history, setHistory }}
+    >
       {children}
     </AppContext.Provider>
   );
