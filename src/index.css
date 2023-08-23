@@ -167,7 +167,7 @@ a {
   cursor: pointer;
   appearance: none;
   color: var(--white);
-  background: var(--primary-500);
+  /* background: var(--primary-500); */
   border: none;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -179,7 +179,7 @@ a {
 
 .btn:hover {
   color: var(--white);
-  background: var(--primary-700);
+  /* background: var(--primary-700); */
   box-shadow: var(--shadow-2);
 }
 button.small {
@@ -285,4 +285,18 @@ form > :last-child {
 
 p{
   width: 100%;
+}
+
+table {
+  border: 2px solid forestgreen;
+  padding: 1px;
+}
+
+th {
+  border: 1px solid black;
+}
+
+td {
+  border: 2px solid forestgreen;
+  text-align: center;
 }

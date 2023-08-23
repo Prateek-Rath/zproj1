@@ -9,6 +9,8 @@ import QuestionView from "./QuestionView";
 import Home from "./Home";
 import Start from "./Attempt/Start";
 import AttemptPage from "./Attempt/AttemptPage";
+import Analysis from "./Attempt/Finish";
+import Results from "./Attempt/Results";
 // import { useState } from "react";
 
 function App() {
@@ -27,7 +29,12 @@ function App() {
           path="/quiz/attempt/:quizid/:questionid"
           element={<AttemptPage />}
         ></Route>
-        <Route path="/results" element={<h1>Project</h1>}></Route>
+        <Route path="/results" element={<Results />}></Route>
+        <Route path="/results/finish/:quizname" element={<Analysis />}></Route>
+        <Route
+          path="/results/details/:historyid"
+          element={<Analysis />}
+        ></Route>
         <Route path="/about" element={<Team />}></Route>
         <Route path="/about" element={<h1>Cal</h1>}></Route>
       </Routes>

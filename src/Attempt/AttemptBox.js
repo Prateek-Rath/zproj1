@@ -121,10 +121,10 @@ export default function AttemptBox({
           </div>
           <div>
             <button
-              className="btn btn-blue m-2"
+              className="btn bg-blue-500 m-2"
               onClick={(e) => {
-                setSelection("e");
-                handleChoice(e, qno, "e");
+                setSelection("");
+                handleChoice(e, qno, "");
               }}
             >
               Clear Response
@@ -143,7 +143,7 @@ export default function AttemptBox({
           </p>
         </div>
         <div className="bg-white h-5">
-          <label for="num">Enter a NUMERIC VALUE AS YOUR ANSWER</label>
+          <label htmlFor="num">Enter a NUMERIC VALUE AS YOUR ANSWER</label>
           <input
             className="rounded m-2"
             name="num"

@@ -3,4 +3,4 @@ the history array will be like ...(decide later)
 When I press finish(/the timer runs out), I have to set the history array's particular attribute called responses
 
 'e' in a response indicates that the question has not been attempted
-history : [{your_responses: ['a', 1, 'e'], feedback:{noattempted: x, nounattempted: y, nocorrect: z, noincorrect: a}, quizname:"", numberofattempts:1, ...}, {}, {} ...]
+history : [{your_responses: ['a', 1, 'e'], feedback:{noattempted: x, nounattempted: y, nocorrect: z, noincorrect: a}, quizname:"", numberofattempts:1, date: date()}, {}, {} ...]

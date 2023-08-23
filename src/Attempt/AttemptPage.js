@@ -1,14 +1,15 @@
-import { useLocation } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import React from "react";
 import AttemptBox from "./AttemptBox";
 import { AppContext } from "../context";
 import { v4 as uuidv4 } from "uuid";
+// import manualstuff from "./manual";
 
 export default function AttemptPage() {
   //   const { quizid, questionid } = useParams();
-
+  const navigate = useNavigate();
   const location = useLocation();
   const {
     state: { reqone },
@@ -17,16 +18,20 @@ export default function AttemptPage() {
   const length = reqone.qa.length;
   let arr = [];
   for (let i = 0; i < length; i = i + 1) {
-    arr.push("e"); //initially all responses are 'e' i.e. no option is selected
+    arr.push(""); //initially all responses are '' i.e. no option is selected
   }
 
   // const navigate = useNavigate();
   const { history, setHistory } = useContext(AppContext);
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(history));
+  }, [history]);
   const [qno, setqno] = useState(1);
   const [responses, setResponses] = useState(arr);
   // console.log("initialized responses using useState");
-  const [selection, setSelection] = useState("e");
+  const [selection, setSelection] = useState("");
   const [val, setVal] = useState(Infinity);
+
   function goNext() {
     setqno((qno % length) + 1);
   }
@@ -60,18 +65,17 @@ export default function AttemptPage() {
       incorrect = 0;
     responses.map((el, index) => {
       if (reqone.qa[index].type === "mcq") {
-        if (el === "e") unattempted++;
+        if (el === "") unattempted++;
         else attempted++;
         if (el === reqone.qa[index].answer) correct++;
         else incorrect++;
       } else {
-        if (el === Infinity) unattempted++;
+        if (el === Infinity || el === "") unattempted++;
         else attempted++;
         if (Number(el) === Number(reqone.qa[index].answer)) {
           correct++;
         } else incorrect++;
       }
-
       return el;
     });
     let entry = {
@@ -81,14 +85,18 @@ export default function AttemptPage() {
         unattempted: unattempted,
         total: total,
         correct: correct,
-        incorrect: incorrect,
+        incorrect: incorrect - unattempted,
       },
+      date: new Date(),
       quiz: reqone,
       id: uuidv4(),
     };
-    setHistory([...history, entry]);
-    console.log(entry);
-    // navigate(`/summary/${id}`);
+    let newhistory = history;
+    newhistory.push(entry);
+    setHistory(newhistory);
+    localStorage.setItem("history", JSON.stringify(newhistory));
+    console.log("entry: ", entry);
+    navigate(`/results/finish/${reqone.name}`);
   }
 
   return (

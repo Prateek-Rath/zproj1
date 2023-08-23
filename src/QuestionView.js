@@ -52,7 +52,7 @@ export default function QuestionView() {
         )}
       </div>
       <button
-        className="btn btn-blue m-2"
+        className="btn bg-blue-500 m-2"
         onClick={() => {
           navigate(`/edit/${reqel.key}`);
         }}
